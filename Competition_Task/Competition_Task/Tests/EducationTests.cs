@@ -12,26 +12,20 @@ namespace Competition_Task.Tests
     //[Parallelizable(ParallelScope.Fixtures)]
     public class EducationTests:BaseClass
     {
-        
-       
-        
-            LoginPage LoginPageObj = new LoginPage();
-            HomePage HomePageObj = new HomePage();
-            EducationTab EducationTabObj = new EducationTab();
-
-           public static string json = File.ReadAllText(@"A:\Industry Connect\MarsCompetition_Task\Competition_Task\Competition_Task\TestData\Educations.json");     
-           public static JArray educationsvalues = JArray.Parse(json);
 
 
-            IList<Educations> educations = educationsvalues.Select(p => new Educations
-            {
-                UniversityName = (string)p["UniversityName"],
-                Country = (string)p["Country"],
-                Title = (string)p["Title"],
-                Degree = (string)p["Degree"],
-                YearOfGraduation = (string)p["YearOfGraduation"]
-            }).ToList();
 
+        LoginPage LoginPageObj;
+        HomePage HomePageObj;
+        EducationTab EducationTabObj;
+        public EducationTests()
+        {
+            LoginPageObj = new LoginPage();
+            HomePageObj = new HomePage();
+            EducationTabObj = new EducationTab();
+
+
+        }
             [SetUp]
             public void SetUpEducationTest()
             {
@@ -49,8 +43,11 @@ namespace Competition_Task.Tests
             [Test, Order(1), Description("Adding a new Education Record")]
             public void AddaNewEducationRecordwithValidData()
             {
-                               
-                EducationTabObj.AddEducation(educations[0].UniversityName, educations[0].Country, educations[0].Title, educations[0].YearOfGraduation, educations[0].Degree);
+
+            List<Educations> Addeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddEducations.json");
+
+
+            EducationTabObj.AddEducation(Addeducations[0].UniversityName, Addeducations[0].Country, Addeducations[0].Title, Addeducations[0].YearOfGraduation, Addeducations[0].Degree);
 
                 Thread.Sleep(2000);
                 Assert.That(EducationTabObj.PopUpMsg.Text == "Education has been added", "education has not been added");
@@ -61,13 +58,14 @@ namespace Competition_Task.Tests
 
             public void AddMultipleEducationRecordswithValidData()
             {
-                EducationTabObj.AddEducation(educations[0].UniversityName, educations[0].Country, educations[0].Title, educations[0].YearOfGraduation, educations[0].Degree);
+            List<Educations> Addeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddEducations.json");
+            EducationTabObj.AddEducation(Addeducations[0].UniversityName, Addeducations[0].Country, Addeducations[0].Title, Addeducations[0].YearOfGraduation, Addeducations[0].Degree);
                 Thread.Sleep(2000);
                 Assert.That(EducationTabObj.PopUpMsg.Text == "Education has been added", "education has not been added");
-                EducationTabObj.AddEducation(educations[1].UniversityName, educations[1].Country, educations[1].Title, educations[1].YearOfGraduation, educations[1].Degree);
+                EducationTabObj.AddEducation(Addeducations[1].UniversityName, Addeducations[1].Country, Addeducations[1].Title, Addeducations[1].YearOfGraduation, Addeducations[1].Degree);
                 Thread.Sleep(2000);
                 Assert.That(EducationTabObj.PopUpMsg.Text == "Education has been added", "education has not been added");
-                EducationTabObj.AddEducation(educations[2].UniversityName, educations[2].Country, educations[2].Title, educations[2].YearOfGraduation, educations[2].Degree);
+                EducationTabObj.AddEducation(Addeducations[2].UniversityName, Addeducations[2].Country, Addeducations[2].Title, Addeducations[2].YearOfGraduation, Addeducations[2].Degree);
                 Thread.Sleep(2000);
                 Assert.That(EducationTabObj.PopUpMsg.Text == "Education has been added", "education has not been added");
 
@@ -76,11 +74,12 @@ namespace Competition_Task.Tests
             [Test, Order(3), Description("Adding a Duplicate Education Record")]
             public void AddDuplicateEducationRecord()
             {
-                EducationTabObj.AddEducation(educations[0].UniversityName, educations[0].Country, educations[0].Title, educations[0].YearOfGraduation, educations[0].Degree);
+            List<Educations> Addeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddEducations.json");
+            EducationTabObj.AddEducation(Addeducations[0].UniversityName, Addeducations[0].Country, Addeducations[0].Title, Addeducations[0].YearOfGraduation, Addeducations[0].Degree);
 
                 Thread.Sleep(2000);
                 Assert.That(EducationTabObj.PopUpMsg.Text == "Education has been added", "education has not been added");
-                EducationTabObj.AddEducation(educations[0].UniversityName, educations[0].Country, educations[0].Title, educations[0].YearOfGraduation, educations[0].Degree);
+                EducationTabObj.AddEducation(Addeducations[0].UniversityName, Addeducations[0].Country, Addeducations[0].Title, Addeducations[0].YearOfGraduation, Addeducations[0].Degree);
                 Thread.Sleep(2000);
                 Assert.That(EducationTabObj.PopUpMsg.Text == "This information is already exist.", "education has been added");
 
@@ -92,7 +91,8 @@ namespace Competition_Task.Tests
             [Test, Order(4), Description("Adding a new Education Record with Special Characters")]
             public void AddanEducationRecordWithSpecialCharacters()
             {
-                EducationTabObj.AddEducation(educations[3].UniversityName, educations[3].Country, educations[3].Title, educations[3].YearOfGraduation, educations[3].Degree);
+            List<Educations> Addeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddEducations.json");
+            EducationTabObj.AddEducation(Addeducations[3].UniversityName, Addeducations[3].Country, Addeducations[3].Title, Addeducations[3].YearOfGraduation, Addeducations[3].Degree);
 
                 Thread.Sleep(2000);
                 Assert.That(EducationTabObj.PopUpMsg.Text == "Education has been added", "education has not been added");
@@ -102,13 +102,15 @@ namespace Competition_Task.Tests
             [Test, Order(5), Description("Adding a new Education Record with Destructive Data(100 Characters)")]
             public void AddEducationRecordWithDestructiveData()
             {
-                EducationTabObj.AddEducation(educations[4].UniversityName, educations[4].Country, educations[4].Title, educations[4].YearOfGraduation, educations[4].Degree);
+            List<Educations> Addeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddEducations.json");
+            EducationTabObj.AddEducation(Addeducations[4].UniversityName, Addeducations[4].Country, Addeducations[4].Title, Addeducations[4].YearOfGraduation, Addeducations[4].Degree);
 
             }
             [Test, Order(6), Description("Adding a new Education Record with Null University Data")]
             public void AddEducationRecordWithNullUniversity()
             {
-                EducationTabObj.AddNewEducationRecordWithoutRequirdFeilds(null, educations[0].Country, educations[0].Title, educations[0].YearOfGraduation, educations[0].Degree);
+            List<Educations> Addeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddEducations.json");
+            EducationTabObj.AddNewEducationRecordWithoutRequirdFeilds(null, Addeducations[0].Country, Addeducations[0].Title, Addeducations[0].YearOfGraduation, Addeducations[0].Degree);
 
                 Thread.Sleep(2000);
                 Assert.That(EducationTabObj.PopUpMsg.Text == "Please enter all the fields", "education has been added");
@@ -117,7 +119,8 @@ namespace Competition_Task.Tests
             [Test, Order(7), Description("Adding a new Education Record with Null Country Data")]
             public void AddNewEducationRecordWithNullCountry()
             {
-                EducationTabObj.AddNewEducationRecordWithoutRequirdFeilds(educations[0].UniversityName, null, educations[0].Title, educations[0].YearOfGraduation, educations[0].Degree);
+            List<Educations> Addeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddEducations.json");
+            EducationTabObj.AddNewEducationRecordWithoutRequirdFeilds(Addeducations[0].UniversityName, null, Addeducations[0].Title, Addeducations[0].YearOfGraduation, Addeducations[0].Degree);
 
                 Thread.Sleep(2000);
                 Assert.That(EducationTabObj.PopUpMsg.Text == "Please enter all the fields", "education has been added");
@@ -126,7 +129,8 @@ namespace Competition_Task.Tests
             [Test, Order(8), Description("Adding a new Education Record with Null Title Data")]
             public void AddEducationRecordWithNullTitle()
             {
-                EducationTabObj.AddNewEducationRecordWithoutRequirdFeilds(educations[0].UniversityName, educations[0].Country, null, educations[0].YearOfGraduation, educations[0].Degree);
+            List<Educations> Addeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddEducations.json");
+            EducationTabObj.AddNewEducationRecordWithoutRequirdFeilds(Addeducations[0].UniversityName, Addeducations[0].Country, null, Addeducations[0].YearOfGraduation, Addeducations[0].Degree);
 
                 Thread.Sleep(2000);
                 Assert.That(EducationTabObj.PopUpMsg.Text == "Please enter all the fields", "education has been added");
@@ -135,7 +139,8 @@ namespace Competition_Task.Tests
             [Test, Order(9), Description("Adding a new Education Record with Null Year Data")]
             public void AddEducationRecordWithNullYear()
             {
-                EducationTabObj.AddNewEducationRecordWithoutRequirdFeilds(educations[0].UniversityName, educations[0].Country, educations[0].Title, null, educations[0].Degree);
+            List<Educations> Addeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddEducations.json");
+            EducationTabObj.AddNewEducationRecordWithoutRequirdFeilds(Addeducations[0].UniversityName, Addeducations[0].Country, Addeducations[0].Title, null, Addeducations[0].Degree);
 
                 Thread.Sleep(2000);
                 Assert.That(EducationTabObj.PopUpMsg.Text == "Please enter all the fields", "education has been added");
@@ -144,7 +149,8 @@ namespace Competition_Task.Tests
             [Test, Order(10), Description("Adding a new Education Record with Null Degree Data")]
             public void AddEducationRecordWithNullDegree()
             {
-                EducationTabObj.AddNewEducationRecordWithoutRequirdFeilds(educations[0].UniversityName, educations[0].Country, educations[0].Title, educations[0].YearOfGraduation, null);
+            List<Educations> Addeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddEducations.json");
+            EducationTabObj.AddNewEducationRecordWithoutRequirdFeilds(Addeducations[0].UniversityName, Addeducations[0].Country, Addeducations[0].Title, Addeducations[0].YearOfGraduation, null);
 
                 Thread.Sleep(2000);
                 Assert.That(EducationTabObj.PopUpMsg.Text == "Please enter all the fields", "education has been added");
@@ -153,7 +159,8 @@ namespace Competition_Task.Tests
             [Test, Order(11), Description("Adding a new Education Record with Null Data")]
             public void AddEducationRecordWithNullValues()
             {
-                EducationTabObj.AddNewEducationRecordWithoutRequirdFeilds(null, null, null, null, null);
+            List<Educations> Addeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddEducations.json");
+            EducationTabObj.AddNewEducationRecordWithoutRequirdFeilds(null, null, null, null, null);
 
                 Thread.Sleep(2000);
                 Assert.That(EducationTabObj.PopUpMsg.Text == "Please enter all the fields", "education has been added");
@@ -164,13 +171,14 @@ namespace Competition_Task.Tests
             [Test, Order(12), Description("Editing an Existing Education Record with Updating University")]
             public void EditEducationRecordwithUniversity()
             {
-                EducationTabObj.AddEducation(educations[0].UniversityName, educations[0].Country, educations[0].Title, educations[0].YearOfGraduation, educations[0].Degree);
+            List<Educations> Addeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddEducations.json");
+            EducationTabObj.AddEducation(Addeducations[0].UniversityName, Addeducations[0].Country, Addeducations[0].Title, Addeducations[0].YearOfGraduation, Addeducations[0].Degree);
 
                 Thread.Sleep(2000);
                 Assert.That(EducationTabObj.PopUpMsg.Text == "Education has been added", "education has not been added");
-        
 
-                EducationTabObj.EditEducationSingleField(educations[1].UniversityName, "UniversityName");
+            List<Educations> Updateeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\UpdateEducations.json");
+            EducationTabObj.EditEducationSingleField(Updateeducations[1].UniversityName, "UniversityName");
 
                 Thread.Sleep(2000);
                 Assert.That(EducationTabObj.PopUpMsg.Text == "Education as been updated", "education has not been updated");
@@ -180,15 +188,16 @@ namespace Competition_Task.Tests
             [Test, Order(13), Description("Editing an Existing Education Record with Updating Country")]
             public void EditEducationRecordwithCountry()
             {
-                EducationTabObj.AddEducation(educations[0].UniversityName, educations[0].Country, educations[0].Title, educations[0].YearOfGraduation, educations[0].Degree);
+            List<Educations> Addeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddEducations.json");
+            EducationTabObj.AddEducation(Addeducations[0].UniversityName, Addeducations[0].Country, Addeducations[0].Title, Addeducations[0].YearOfGraduation, Addeducations[0].Degree);
 
                 Thread.Sleep(2000);
                 Assert.That(EducationTabObj.PopUpMsg.Text == "Education has been added", "education has not been added");
-              
 
-                EducationTabObj.EditEducationSingleField(educations[1].Country, "CountryOfCollege");
+            List<Educations> Updateeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\UpdateEducations.json");
+            EducationTabObj.EditEducationSingleField(Updateeducations[1].Country, "Country");
 
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
                 Assert.That(EducationTabObj.PopUpMsg.Text == "Education as been updated", "education has not been updated");
              
             }
@@ -196,13 +205,14 @@ namespace Competition_Task.Tests
             [Test, Order(14), Description("Editing an Existing Education Record with Updating Title")]
             public void EditEducationRecordwithTitle()
             {
-                EducationTabObj.AddEducation(educations[0].UniversityName, educations[0].Country, educations[0].Title, educations[0].YearOfGraduation, educations[0].Degree);
+            List<Educations> Addeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddEducations.json");
+            EducationTabObj.AddEducation(Addeducations[0].UniversityName, Addeducations[0].Country, Addeducations[0].Title, Addeducations[0].YearOfGraduation, Addeducations[0].Degree);
 
                 Thread.Sleep(2000);
                 Assert.That(EducationTabObj.PopUpMsg.Text == "Education has been added", "education has not been added");
 
-
-                EducationTabObj.EditEducationSingleField(educations[1].Title, "Title");
+            List<Educations> Updateeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\UpdateEducations.json");
+            EducationTabObj.EditEducationSingleField(Updateeducations[1].Title, "Title");
 
                 Thread.Sleep(2000);
                 Assert.That(EducationTabObj.PopUpMsg.Text == "Education as been updated", "education has not been updated");
@@ -212,13 +222,14 @@ namespace Competition_Task.Tests
             [Test, Order(15), Description("Editing an Existing Education Record with Updating Year")]
             public void EditEducationRecordwithYear()
             {
-                EducationTabObj.AddEducation(educations[0].UniversityName, educations[0].Country, educations[0].Title, educations[0].YearOfGraduation, educations[0].Degree);
+            List<Educations> Addeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddEducations.json");
+            EducationTabObj.AddEducation(Addeducations[0].UniversityName, Addeducations[0].Country, Addeducations[0].Title, Addeducations[0].YearOfGraduation, Addeducations[0].Degree);
 
                 Thread.Sleep(2000);
                 Assert.That(EducationTabObj.PopUpMsg.Text == "Education has been added", "education has not been added");
-            
 
-                EducationTabObj.EditEducationSingleField(educations[1].YearOfGraduation, "YearOfGraduation");
+            List<Educations> Updateeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\UpdateEducations.json");
+            EducationTabObj.EditEducationSingleField(Updateeducations[1].YearOfGraduation, "YearOfGraduation");
 
                 Thread.Sleep(2000);
                 Assert.That(EducationTabObj.PopUpMsg.Text == "Education as been updated", "education has not been updated");
@@ -228,12 +239,13 @@ namespace Competition_Task.Tests
             [Test, Order(16), Description("Editing an Existing Education Record with Updating Degree")]
             public void EditEducationRecordwithDegree()
             {
-                EducationTabObj.AddEducation(educations[0].UniversityName, educations[0].Country, educations[0].Title, educations[0].YearOfGraduation, educations[0].Degree);
+            List<Educations> Addeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddEducations.json");
+            EducationTabObj.AddEducation(Addeducations[0].UniversityName, Addeducations[0].Country, Addeducations[0].Title, Addeducations[0].YearOfGraduation, Addeducations[0].Degree);
 
                 Thread.Sleep(2000);
                 Assert.That(EducationTabObj.PopUpMsg.Text == "Education has been added", "education has not been added");
-
-                EducationTabObj.EditEducationSingleField(educations[1].Degree, "Degree");
+            List<Educations> Updateeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\UpdateEducations.json");
+            EducationTabObj.EditEducationSingleField(Updateeducations[1].Degree, "Degree");
 
                 Thread.Sleep(2000);
                 Assert.That(EducationTabObj.PopUpMsg.Text == "Education as been updated", "education has not been updated");
@@ -243,15 +255,17 @@ namespace Competition_Task.Tests
             [Test, Order(17), Description("Editing an Existing Education Record with Updating All Fields")]
             public void EditEducationRecord()
             {
-                EducationTabObj.AddEducation(educations[0].UniversityName, educations[0].Country, educations[0].Title, educations[0].YearOfGraduation, educations[0].Degree);
+            List<Educations> Addeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddEducations.json");
+            EducationTabObj.AddEducation(Addeducations[0].UniversityName, Addeducations[0].Country, Addeducations[0].Title, Addeducations[0].YearOfGraduation, Addeducations[0].Degree);
 
-                Thread.Sleep(2000);
+            List<Educations> Updateeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\UpdateEducations.json");
+            Thread.Sleep(2000);
                 Assert.That(EducationTabObj.PopUpMsg.Text == "Education has been added", "education has not been added");
               
 
-                EducationTabObj.EditEducationRecord(educations[1].UniversityName, educations[1].Country, educations[1].Title, educations[1].YearOfGraduation, educations[1].Degree);
+                EducationTabObj.EditEducationRecord(Updateeducations[1].UniversityName, Updateeducations[1].Country, Updateeducations[1].Title, Updateeducations[1].YearOfGraduation, Updateeducations[1].Degree);
 
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
                 Assert.That(EducationTabObj.PopUpMsg.Text == "Education as been updated", "education has not been updated");
             
             }
@@ -259,12 +273,13 @@ namespace Competition_Task.Tests
             [Test, Order(18), Description("Deleting an Existing Education Record")]
             public void DeleteExistingEducationRecord()
             {
-                EducationTabObj.AddEducation(educations[0].UniversityName, educations[0].Country, educations[0].Title, educations[0].YearOfGraduation, educations[0].Degree);
+            List<Educations> Addeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddEducations.json");
+            EducationTabObj.AddEducation(Addeducations[0].UniversityName, Addeducations[0].Country, Addeducations[0].Title, Addeducations[0].YearOfGraduation, Addeducations[0].Degree);
 
                 Thread.Sleep(2000);
                 Assert.That(EducationTabObj.PopUpMsg.Text == "Education has been added", "education has not been added");
-              
-                EducationTabObj.DeleteEducationRecord();
+            List<Educations> Deleteeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\DeleteEducation.json");
+            EducationTabObj.DeleteEducationRecord();
                 Thread.Sleep(2000);
                 Assert.That(EducationTabObj.PopUpMsg.Text == "Education entry successfully removed", "Education entry not removed");
                 Assert.That(EducationTabObj.Rows.Count == 0, "Education record is still appeared");

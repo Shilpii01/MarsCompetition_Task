@@ -79,7 +79,7 @@ namespace Competition_Task.Pages
                     CollegeNameTextbox.Clear();
                     CollegeNameTextbox.SendKeys(Value);
                     break;
-                case "CountryOfCollege":
+                case "Country":
                     var selectElement = new SelectElement(CountryDropdown);
                     selectElement.SelectByValue(Value);
                     break;
