@@ -42,7 +42,7 @@ namespace Competition_Task.Tests
             public void AddaNewCertificateRecordwithValidData()
             {
 
-            List<Certification> Addcertifications = JsonReader.ReadTestDataFromJson<Certification>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddCertifications.json");
+            List<Certification> Addcertifications = JsonReader.ReadTestDataFromJson<Certification>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddCertificateREcordWithValidData.json");
 
 
             CertificationsTabObj.AddCertficateRecord(Addcertifications[0].CertificateName, Addcertifications[0].CertifiedFrom, Addcertifications[0].Year);
@@ -59,7 +59,7 @@ namespace Competition_Task.Tests
 
             public void AddMultipleCertificateRecordswithValidData()
             {
-            List<Certification> Addcertifications = JsonReader.ReadTestDataFromJson<Certification>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddCertifications.json");
+            List<Certification> Addcertifications = JsonReader.ReadTestDataFromJson<Certification>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\MultipleCertificateRecordWithValidData.json");
             CertificationsTabObj.AddCertficateRecord(Addcertifications[0].CertificateName, Addcertifications[0].CertifiedFrom, Addcertifications[0].Year);
                 Thread.Sleep(2000);
                 Assert.That(CertificationsTabObj.PopUpMsg.Text == Addcertifications[0].CertificateName + " has been added to your certification", "certificate has not been added");
@@ -75,7 +75,7 @@ namespace Competition_Task.Tests
             [Test, Order(3), Description("Adding a Duplicate Certificate Record")]
             public void AddDuplicatecertificateRecord()
             {
-            List<Certification> Addcertifications = JsonReader.ReadTestDataFromJson<Certification>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddCertifications.json");
+            List<Certification> Addcertifications = JsonReader.ReadTestDataFromJson<Certification>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\DuplicateCertificateRecord.json");
             CertificationsTabObj.AddCertficateRecord(Addcertifications[0].CertificateName, Addcertifications[0].CertifiedFrom, Addcertifications[0].Year);
 
                 Thread.Sleep(2000);
@@ -91,18 +91,18 @@ namespace Competition_Task.Tests
             [Test, Order(4), Description("Adding a new Certificate Record with Special Characters")]
             public void AddCertificateRecordWithSpecialCharacters()
             {
-            List<Certification> Addcertifications = JsonReader.ReadTestDataFromJson<Certification>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddCertifications.json");
-            CertificationsTabObj.AddCertficateRecord(Addcertifications[3].CertificateName, Addcertifications[3].CertifiedFrom, Addcertifications[3].Year);
+            List<Certification> Addcertifications = JsonReader.ReadTestDataFromJson<Certification>("AA:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\CertificateWithSpecialCharacters.json");
+            CertificationsTabObj.AddCertficateRecord(Addcertifications[2].CertificateName, Addcertifications[2].CertifiedFrom, Addcertifications[2].Year);
 
                 Thread.Sleep(2000);
-                Assert.That(CertificationsTabObj.PopUpMsg.Text == Addcertifications[3].CertificateName + " has been added to your certification", "certificate has not been added");
+                Assert.That(CertificationsTabObj.PopUpMsg.Text == Addcertifications[2].CertificateName + " has been added to your certification", "certificate has not been added");
 
             }
 
             [Test, Order(5), Description("Adding a new Certificate Record with Destructive Data(100 Characters)")]
             public void AddCertificateRecordWithDestructiveData()
             {
-            List<Certification> Addcertifications = JsonReader.ReadTestDataFromJson<Certification>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddCertifications.json");
+            List<Certification> Addcertifications = JsonReader.ReadTestDataFromJson<Certification>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\CertificateWithDestructiveData.json");
             CertificationsTabObj.AddCertficateRecord(Addcertifications[4].CertificateName, Addcertifications[4].CertifiedFrom, Addcertifications[4].Year);
                 //Assert.That(CertificationsTabObj.PopUpMsg.Text == certifications[4].CertificateName + "  has been added to your certification", "certificate has not been added");
             }

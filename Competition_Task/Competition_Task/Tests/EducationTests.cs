@@ -44,7 +44,7 @@ namespace Competition_Task.Tests
             public void AddaNewEducationRecordwithValidData()
             {
 
-            List<Educations> Addeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddEducations.json");
+            List<Educations> Addeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddEducation RecordWithValidData.json");
 
 
             EducationTabObj.AddEducation(Addeducations[0].UniversityName, Addeducations[0].Country, Addeducations[0].Title, Addeducations[0].YearOfGraduation, Addeducations[0].Degree);
@@ -58,7 +58,7 @@ namespace Competition_Task.Tests
 
             public void AddMultipleEducationRecordswithValidData()
             {
-            List<Educations> Addeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddEducations.json");
+            List<Educations> Addeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddMultipleEducationRecord.json");
             EducationTabObj.AddEducation(Addeducations[0].UniversityName, Addeducations[0].Country, Addeducations[0].Title, Addeducations[0].YearOfGraduation, Addeducations[0].Degree);
                 Thread.Sleep(2000);
                 Assert.That(EducationTabObj.PopUpMsg.Text == "Education has been added", "education has not been added");
@@ -74,7 +74,7 @@ namespace Competition_Task.Tests
             [Test, Order(3), Description("Adding a Duplicate Education Record")]
             public void AddDuplicateEducationRecord()
             {
-            List<Educations> Addeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddEducations.json");
+            List<Educations> Addeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddDuplicateEducations.json");
             EducationTabObj.AddEducation(Addeducations[0].UniversityName, Addeducations[0].Country, Addeducations[0].Title, Addeducations[0].YearOfGraduation, Addeducations[0].Degree);
 
                 Thread.Sleep(2000);
@@ -91,7 +91,7 @@ namespace Competition_Task.Tests
             [Test, Order(4), Description("Adding a new Education Record with Special Characters")]
             public void AddanEducationRecordWithSpecialCharacters()
             {
-            List<Educations> Addeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddEducations.json");
+            List<Educations> Addeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddEducationWithSpecialCharacters.json");
             EducationTabObj.AddEducation(Addeducations[3].UniversityName, Addeducations[3].Country, Addeducations[3].Title, Addeducations[3].YearOfGraduation, Addeducations[3].Degree);
 
                 Thread.Sleep(2000);
@@ -102,7 +102,7 @@ namespace Competition_Task.Tests
             [Test, Order(5), Description("Adding a new Education Record with Destructive Data(100 Characters)")]
             public void AddEducationRecordWithDestructiveData()
             {
-            List<Educations> Addeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddEducations.json");
+            List<Educations> Addeducations = Utilities.JsonReader.ReadTestDataFromJson<Educations>("A:\\Industry Connect\\MarsCompetition_Task\\Competition_Task\\Competition_Task\\TestData\\AddEducationWithDestructiveData.json");
             EducationTabObj.AddEducation(Addeducations[4].UniversityName, Addeducations[4].Country, Addeducations[4].Title, Addeducations[4].YearOfGraduation, Addeducations[4].Degree);
 
             }

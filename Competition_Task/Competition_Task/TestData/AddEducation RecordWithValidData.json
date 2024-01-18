@@ -1,0 +1,30 @@
+﻿[
+  {
+    "UniversityName": "AU",
+    "Country": "Aruba",
+    "Title": "M.A",
+    "Degree": "Masters",
+    "YearOfGraduation": "2011"
+  },
+  {
+    "UniversityName": "AKU",
+    "Country": "Mexico",
+    "Title": "Associate",
+    "Degree": "Management",
+    "YearOfGraduation": "2005"
+  },
+  {
+    "UniversityName": "SMU",
+    "Country": "Angola",
+    "Title": "MFA",
+    "Degree": "Finance",
+    "YearOfGraduation": "2013"
+  },
+  {
+    "UniversityName": "NIT",
+    "Country": "New Zealand",
+    "Title": "BArch",
+    "Degree": "Architecture",
+    "YearOfGraduation": "2012"
+  }
+]
