@@ -1,0 +1,17 @@
+﻿[
+  {
+    "CertificateName": "ACD",
+    "CertifiedFrom": "AWS",
+    "Year": "2009"
+  },
+  {
+    "CertificateName": "DB2",
+    "CertifiedFrom": "IBM",
+    "Year": "2006"
+  },
+  {
+    "CertificateName": "Six Sigma",
+    "CertifiedFrom": "XYZ",
+    "Year": "2010"
+  }
+]

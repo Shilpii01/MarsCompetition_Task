@@ -1,0 +1,29 @@
+﻿[
+  {
+    "CertificateName": "ACD",
+    "CertifiedFrom": "AWS",
+    "Year": "2009"
+  },
+  {
+    "CertificateName": "DB2",
+    "CertifiedFrom": "IBM",
+    "Year": "2006"
+  },
+  {
+    "CertificateName": "Six Sigma",
+    "CertifiedFrom": "XYZ",
+    "Year": "2010"
+  },
+  {
+    "CertificateName": "QWER",
+    "CertifiedFrom": "CET",
+    "Year": "2011"
+  },
+  {
+    "CertificateName": "Technical",
+    "CertifiedFrom": "Intel",
+    "Year": "2013"
+  }
+
+
+]

@@ -1,0 +1,24 @@
+﻿[
+  {
+    "UniversityName": "KS University",
+    "Country": "Austria",
+    "Title": "M.A",
+    "Degree": "Masters",
+    "YearOfGraduation": "2020"
+  },
+  {
+    "UniversityName": "Oxford",
+    "Country": "Austria",
+    "Title": "M.A",
+    "Degree": "Degree",
+    "YearOfGraduation": "2020"
+  },
+  {
+    "UniversityName": "OXFORD",
+    "Country": "India",
+    "Title": "B.Tech",
+    "Degree": "Bachelors",
+    "YearOfGraduation": "2009"
+  }
+
+]

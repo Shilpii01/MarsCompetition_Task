@@ -1,0 +1,59 @@
+﻿[
+  {
+    "UniversityName": "KSM University",
+    "Country": "Austria",
+    "Title": "M.A",
+    "Degree": "Masters",
+    "YearOfGraduation": "2020"
+  },
+  {
+    "UniversityName": "Oxford",
+    "Country": "Austria",
+    "Title": "B.A",
+    "Degree": "Degree",
+    "YearOfGraduation": "2020"
+  },
+  {
+    "UniversityName": "IIT",
+    "Country": "India",
+    "Title": "B.Tech",
+    "Degree": "Bachelors",
+    "YearOfGraduation": "2005"
+  },
+  {
+    "UniversityName": "AQW University",
+    "Country": "Angola",
+    "Title": "B.A",
+    "Degree": "%@!)(%$",
+    "YearOfGraduation": "2015"
+  },
+  {
+    "UniversityName": "ASD",
+    "Country": "Country of College/University",
+    "Title": "Title",
+    "Degree": "   ",
+    "YearOfGraduation": "Year of graduation"
+  },
+  {
+    "UniversityName": "2588964",
+    "Country": "Austria",
+    "Title": "M.A",
+    "Degree": "145236",
+    "YearOfGraduation": "2004"
+  },
+  {
+    "UniversityName": "Oxford",
+    "Country": "India",
+    "Title": "B.Tech",
+    "Degree": "Bachelors",
+    "YearOfGraduation": "2014"
+  },
+  {
+    "UniversityName": "KS University",
+    "Country": "Angola",
+    "Title": "B.A",
+    "Degree": "%@!)(%$",
+    "YearOfGraduation": "2015"
+  }
+  
+]
